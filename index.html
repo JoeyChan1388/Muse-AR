@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sphere 1</title>
 
-
-  <!-- Loads <model-viewer> for modern browsers: -->
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <!-- Loads <model-viewer> for modern browsers: -->
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
     <!-- Loads <model-viewer> for old browsers like IE11: -->
-    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"
+    ></script>
   </head>
   <body>
     <model-viewer
@@ -24,17 +29,32 @@
       max-camera-orbit="auto 90deg auto"
       xr-environment
     >
-      <!-- <button slot="ar-button" id="ar-button">View in your space</button> -->
+      <button slot="ar-button" id="ar-button">View in your space</button>
 
-      <!-- <button id="ar-failure">AR is not tracking!</button> -->
+      <button id="ar-failure">AR is not tracking!</button>
+
+      <div id="ar-prompt">
+        <img
+          src="https://www.gstatic.com/launch/instant/launch-standalone-arrows.svg"
+          alt="Tap to place in your space"
+        />
+      </div>
+
+
     </model-viewer>
   </body>
 
   <style>
+    /* This keeps child nodes hidden while the element loads */
+    :not(:defined) > * {
+      display: none;
+    }
+
     model-viewer {
       width: 100%;
       height: 100vh;
       z-index: 1;
+      overflow-x: hidden;
     }
     #ar-button {
       background-image: url(../../assets/ic_view_in_ar_new_googblue_48dp.png);
@@ -68,6 +88,34 @@
 
     #ar-button:focus-visible {
       outline: 1px solid #4285f4;
+    }
+
+    model-viewer > #ar-prompt {
+      position: absolute;
+      left: 50%;
+      bottom: 175px;
+      animation: elongate 2s infinite ease-in-out alternate;
+      display: none;
+    }
+
+    model-viewer[ar-status="session-started"] > #ar-prompt {
+      display: block;
+    }
+
+    model-viewer > #ar-prompt > img {
+      animation: circle 4s linear infinite;
+    }
+
+    model-viewer > #ar-failure {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 175px;
+      display: none;
+    }
+
+    model-viewer[ar-tracking="not-tracking"] > #ar-failure {
+      display: block;
     }
   </style>
 </html>
