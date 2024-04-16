@@ -32,15 +32,15 @@
     <div>
       <p>Scene</p>
       <select id="scene_select">
-        <option value="../tiles/den_1.jpg">Den</option>
-        <option value="../tiles/kitchen_1.jpg">Kitchen</option>
-        <option value="../tiles/entrance_1.jpg">Entrance</option>
+        <option value="./tiles/den_1.jpg">Den</option>
+        <option value="./tiles/kitchen_1.jpg">Kitchen</option>
+        <option value="./tiles/entrance_1.jpg">Entrance</option>
       </select>
     </div>
 
     <script>
       const modelViewerTexture1 = document.querySelector("model-viewer");
-      const defaultTexture = "../tiles/den_1.jpg";
+      const defaultTexture = "./tiles/den_1.jpg";
 
       modelViewerTexture1.addEventListener("load", () => {
         const material = modelViewerTexture1.model.materials[0];
