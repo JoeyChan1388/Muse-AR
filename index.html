@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+
     <title>Sphere 1</title>
 
     <script
@@ -16,26 +18,28 @@
     ></script>
   </head>
   <body>
-    <model-viewer
-      src="./models/sphere.glb"
-      ar
-      ar-scale="fixed"
-      camera-controls
-      touch-action="pan-y"
-      shadow-intensity="5"
-      skybox-height="2m"
-      max-camera-orbit="auto 90deg auto"
-      xr-environment
-    >
-    </model-viewer>
+    <div class="viewer__container">
+      <h1> Muse AR </h1>
+      <model-viewer
+        src="./models/sphere.glb"
+        ar
+        ar-scale="fixed"
+        camera-controls
+        touch-action="pan-y"
+        shadow-intensity="5"
+        skybox-height="2m"
+        max-camera-orbit="auto 90deg auto"
+        xr-environment
+      >
+      </model-viewer>
 
-    <div>
-      <p>Scene</p>
-      <select id="scene_select">
-        <option value="./tiles/den_1.jpg">Den</option>
-        <option value="./tiles/kitchen_1.jpg">Kitchen</option>
-        <option value="./tiles/entrance_1.jpg">Entrance</option>
-      </select>
+      <div>
+        <select id="scene_select">
+          <option value="./tiles/den_1.jpg">Den</option>
+          <option value="./tiles/kitchen_1.jpg">Kitchen</option>
+          <option value="./tiles/entrance_1.jpg">Entrance</option>
+        </select>
+      </div>
     </div>
 
     <script>
@@ -50,15 +54,20 @@
           const texture = await modelViewerTexture1.createTexture(
             event.target.value
           );
-          console.log(material)
+          console.log(material);
 
-          material['pbrMetallicRoughness']['baseColorTexture'].setTexture(texture);
+          material["pbrMetallicRoughness"]["baseColorTexture"].setTexture(
+            texture
+          );
         };
 
         document
           .querySelector("#scene_select")
           .addEventListener("input", (event) => {
-            createAndApplyTexture("pbrmetallicroughness.baseColorTexture", event);
+            createAndApplyTexture(
+              "pbrmetallicroughness.baseColorTexture",
+              event
+            );
           });
       });
     </script>
