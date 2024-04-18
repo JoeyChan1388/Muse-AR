@@ -8,7 +8,7 @@
     <title>Muse Tour AR</title>
 
     <!-- Load the Launchar SDK for WebXR in IOS-->
-    <script src="https://launchar.app/sdk/v1?key=pl6uhN3zrkI92TPHAxuLgVDvqy0NCU7T&redirect=true"></script>
+    <!-- <script src="https://launchar.app/sdk/v1?key=pl6uhN3zrkI92TPHAxuLgVDvqy0NCU7T&redirect=true"></script> -->
 
     <script
       type="module"
@@ -29,7 +29,7 @@
         ar
         ar-scale="fixed"
         camera-controls
-        ar-modes="webxr"
+        ar-modes="webxr scene-viewer quick-look"
         touch-action="pan-y"
         shadow-intensity="5"
         skybox-height="2m"
@@ -37,9 +37,6 @@
         xr-environment
         tabindex="-1"
       >
-        <button  id="clickme">Info</button>
-
-        <button class="hotspot" slot="hotspot-center" data-position="0 0 0" data-normal="0 0 0"></button>
       </model-viewer>
 
       <div>
