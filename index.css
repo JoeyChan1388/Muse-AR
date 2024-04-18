@@ -22,6 +22,10 @@ model-viewer{
     width: 75%;
 }
 
+model-viewer[ar-status="not-presenting"] > button {
+    display: none;
+  }
+
 select {
     padding: 10px;
     margin: 10px;
