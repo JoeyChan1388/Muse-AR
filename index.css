@@ -22,13 +22,13 @@ model-viewer{
     width: 75%;
 }
 
-model-viewer[ar-status="not-presenting"] > #clickme {
+/* model-viewer[ar-status="not-presenting"] > #clickme {
     display: none;
   }
 
   model-viewer[ar-status=" session-started"] > #clickme 
   { display: block; 
-}
+} */
 
 #clickme {
     position: absolute;
